@@ -76,9 +76,13 @@ def read_user_options(config_filename: Optional[str] = None) -> UserOptions:
             readers = [settings.USER_OPTION_READERS["toml"]]
         else:
             readers = [settings.USER_OPTION_READERS["ini"]]
-
+    print(readers)
+    print(config_filename)
+            
     for reader in readers:
+        print(reader)
         options = reader.read_options(config_filename=config_filename)
+        print(options)
         if options:
             normalized_options = _normalize_user_options(options)
             return normalized_options
